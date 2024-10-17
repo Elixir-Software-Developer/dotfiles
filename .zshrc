@@ -181,8 +181,8 @@ path=(
     $HOME/.bin
     $HOME/.bin/created_by_me/bin_nvims/
     $HOME/.local/bin
-    $HOME/.local/bin_mischavandenburg
-    $HOME/.local/bin_ThePrimeagen
+    $HOME/.local/bin/bin_mischavandenburg
+    $HOME/.local/bin/bin_ThePrimeagen
     $HOME/.dotbare
     /home/vscode/.local/bin         # Dev Container Specifics
     /root/.local/bin                # Dev Container Specifics
