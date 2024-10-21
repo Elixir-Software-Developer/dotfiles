@@ -80,3 +80,41 @@ backup_folder_home() {
         printf "%s%s       ~/%s folder does not exist, %sno backup needed%s\n\n" "${BLD}" "${CGR}" "$folder_to_backup" "${CYE}" "${CNC}"
     fi
 }
+
+
+backup_folder_in_config(){
+# Initialize backup
+init_backup
+
+# Backup the folder
+backup_folder_config "$1"
+}
+
+
+backup_file_in_config(){
+
+# Initialize backup
+init_backup
+
+# Backup the file in $HOME/.config/
+backup_file_config "$1"
+
+}
+
+backup_folder_in_home(){
+# Initialize backup
+init_backup
+
+# Backup the folder
+backup_folder_home "$1"
+}
+
+backup_file_in_home(){
+
+# Initialize backup
+init_backup
+
+# Backup the file
+backup_file_home "$1"
+
+}

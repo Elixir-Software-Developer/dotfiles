@@ -36,23 +36,23 @@ test_backup() {
 
     # Test backup_file
     echo "Testing backup_file..."
-    ./backup_files.sh test_file_home.txt
+    backup_file_in_home test_file_home.txt
  echo "..............................................."
 
 
     # Test backup_file_config
     echo "Testing backup_file_config..."
-    ./backup_files_config.sh test_file_config.txt
+    backup_file_in_config test_file_config.txt
     echo "..............................................."
 
     # Test backup_folder
     echo "Testing .config/test_folder_config..."
-    ./backup_folders.sh test_folder_config
+    backup_folder_in_config test_folder_config
     echo "..............................................."
 
     # Test backup_folder_home
     echo "Testing backup_folder_home..."
-    ./backup_folders_home.sh test_folder_home
+    backup_folder_in_home test_folder_home
     echo "..............................................."
 
     echo "Testing complete."
