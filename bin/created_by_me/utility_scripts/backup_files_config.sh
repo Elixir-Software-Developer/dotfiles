@@ -7,9 +7,9 @@ putisima(){
 
 # echo $SCRIPTS_DIR
 # # Source common functions
-# # source "$SCRIPTS_DIR/common_functions.sh"
+# source "$SCRIPTS_DIR/common_functions.sh"
 
-# Source common functions
+# # Source common functions
 # source common_functions.sh
 
 # Initialize backup

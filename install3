@@ -3,17 +3,15 @@
 # Directorio de configuración personal privada (no se sincroniza con git)
 mkdir -p ~/.config/personal/env
 
-# Directorio del script actual
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# Directorio que contiene los scripts a llamar (relativo al script actual)
-SCRIPTS_DIR="$SCRIPT_DIR/bin/created_by_me/utility_scripts"
 
-backup_folder="$HOME/.RiceBackup"
-backup_path="$backup_folder/${folder}_$date"
-
-# Función para cargar un script y sus funciones
 cargar_script() {
+    # Directorio del script actual
+    local SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+    # Directorio que contiene los scripts a llamar (relativo al script actual)
+    local SCRIPTS_DIR="$(dirname "$SCRIPT_DIR")/bin/created_by_me/utility_scripts"
+
     local script_path="$SCRIPTS_DIR/$1"
 
     if [[ -f "$script_path" ]]; then
@@ -24,26 +22,19 @@ cargar_script() {
     fi
 }
 
-check_gum() {
-  if ! command -v gum &>/dev/null; then  # Verifica si gum NO está instalado
-    if sudo pacman -S --noconfirm gum; then  # Intenta instalar con pacman
-      color_echo -b -g "gum" -w "installed" -o "successfully"
-    else
-      echo "pacman -S gum FAILED" # Si falla, muestra un mensaje de error
-    fi
-  fi
-}
+# # Cargar scripts necesarios (ajusta los nombres según tus scripts)
+# cargar_script "logo.sh"
+# cargar_script "backup_files_config.sh"
+# cargar_script "common_functions.sh"
 
-# Cargar scripts necesarios (ajusta los nombres según tus scripts)
-cargar_script "logo.sh"
-
-# display_menu
+# Mostrar logo
 logo "Welcome!"
-
 
 # get dir of the current script and cd in it
 SDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd) && cd "$SDIR" || exit 1
 
+
+export -f cargar_script
 # show usage
 usage() { echo "Usage: $(basename "$0") <module> [module]..." >&2; }
 
