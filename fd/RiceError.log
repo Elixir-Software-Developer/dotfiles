@@ -1,0 +1,14 @@
+mv: cannot create directory '/fd_': Permission denied
+mv: cannot create directory '/fd_': Permission denied
+mv: cannot create directory '/fd_': Permission denied
+mv: cannot create directory '/fd_': Permission denied
+mv: cannot create directory '/fd_': Permission denied
+mv: cannot create directory '/fd_': Permission denied
+mv: cannot overwrite '/home/elixir/.RiceDotfiles/fd_/fd': Directory not empty
+mv: cannot overwrite '/home/elixir/.RiceDotfiles/fd_/fd': Directory not empty
+mv: cannot create directory '/fd_': Permission denied
+mv: cannot create directory '/fd_': Permission denied
+mv: cannot create directory '/fd_': Permission denied
+mv: cannot create directory '/fd_': Permission denied
+mv: cannot create directory '/fd_': Permission denied
+mv: cannot create directory '/fd_': Permission denied
