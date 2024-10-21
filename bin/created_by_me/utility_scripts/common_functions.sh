@@ -14,7 +14,7 @@ backup_folder=~/.RiceBackup
 # Function to initialize the backup process
 init_backup() {
     date=$(date +%Y%m%d-%H%M%S)
-    printf "\nBackup files will be stored in %s%s%s/.RiceBackup%s \n\n" "${BLD}" "${CRE}" "$HOME" "${CNC}"
+    printf "\n       Backup files will be stored in %s%s%s/.RiceBackup%s \n" "${BLD}" "${CRE}" "$HOME" "${CNC}"
     # sleep 1
     [ ! -d "$backup_folder" ] && mkdir -p "$backup_folder"
 }
@@ -25,12 +25,12 @@ backup_file_home() {
     if [ -f ~/$file_to_backup ]; then
         mv "$HOME/$file_to_backup" "$backup_folder/${file_to_backup}_$date" 2>> RiceError.log
         if [ $? -eq 0 ]; then
-            printf "%s%s ~/%s file backed up successfully at %s%s/%s_%s%s\n" "${BLD}" "${CGR}" "$file_to_backup" "${CBL}" "$backup_folder" "$file_to_backup" "$date" "${CNC}"
+            printf "%s%s       ~/%s file backed up successfully at %s%s/%s_%s%s\n\n" "${BLD}" "${CGR}" "$file_to_backup" "${CBL}" "$backup_folder" "$file_to_backup" "$date" "${CNC}"
         else
-            printf "%s%sFailed to backup ~/%s file. See %sRiceError.log%s\n" "${BLD}" "${CRE}" "$file_to_backup" "${CBL}" "${CNC}"
+            printf "%s%sFailed to backup ~/%s file. See %sRiceError.log%s\n\n" "${BLD}" "${CRE}" "$file_to_backup" "${CBL}" "${CNC}"
         fi
     else
-        printf "%s%s ~/%s file does not exist, %sno backup needed%s\n" "${BLD}" "${CGR}" "$file_to_backup" "${CYE}" "${CNC}"
+        printf "%s%s       ~/%s file does not exist, %sno backup needed%s\n\n" "${BLD}" "${CGR}" "$file_to_backup" "${CYE}" "${CNC}"
     fi
 }
 
@@ -38,16 +38,16 @@ backup_file_home() {
 backup_file_config() {
     local file_to_backup="$1"
 
-    
+
     if [ -f "$HOME/.config/$file_to_backup" ]; then
         mv "$HOME/.config/$file_to_backup" "$backup_folder/${file_to_backup}_$date" 2>> RiceError.log
         if [ $? -eq 0 ]; then
-            printf "%s%s ~/.config/%s file backed up successfully at %s%s/%s_%s%s\n" "${BLD}" "${CGR}" "$file_to_backup" "${CBL}" "$backup_folder" "$file_to_backup" "$date" "${CNC}"
+            printf "%s%s       ~/.config/%s file backed up successfully at %s%s/%s_%s%s\n\n" "${BLD}" "${CGR}" "$file_to_backup" "${CBL}" "$backup_folder" "$file_to_backup" "$date" "${CNC}"
         else
-            printf "%s%sFailed to backup ~/.config/%s file. See %sRiceError.log%s\n" "${BLD}" "${CRE}" "$file_to_backup" "${CBL}" "${CNC}"
+            printf "%s%sFailed to backup ~/.config/%s file. See %sRiceError.log%s\n\n" "${BLD}" "${CRE}" "$file_to_backup" "${CBL}" "${CNC}"
         fi
     else
-        printf "%s%s ~/.config/%s file does not exist, %sno backup needed%s\n" "${BLD}" "${CGR}" "$file_to_backup" "${CYE}" "${CNC}"
+        printf "%s%s       ~/.config/%s file does not exist, %sno backup needed%s\n\n" "${BLD}" "${CGR}" "$file_to_backup" "${CYE}" "${CNC}"
     fi
 }
 
@@ -57,12 +57,12 @@ backup_folder_config() {
     if [ -d "$HOME/.config/$folder_to_backup" ]; then
         mv "$HOME/.config/$folder_to_backup" "$backup_folder/${folder_to_backup}_$date" 2>> RiceError.log
         if [ $? -eq 0 ]; then
-            printf "%s%s ~/.config/%s folder backed up successfully at %s%s/%s_%s%s\n" "${BLD}" "${CGR}" "$folder_to_backup" "${CBL}" "$backup_folder" "$folder_to_backup" "$date" "${CNC}"
+            printf "%s%s       ~/.config/%s folder backed up successfully at %s%s/%s_%s%s\n\n" "${BLD}" "${CGR}" "$folder_to_backup" "${CBL}" "$backup_folder" "$folder_to_backup" "$date" "${CNC}"
         else
-            printf "%s%sFailed to backup  ~/.config/%s folder. See %sRiceError.log%s\n" "${BLD}" "${CRE}" "$folder_to_backup" "${CBL}" "${CNC}"
+            printf "%s%sFailed to backup  ~/.config/%s folder. See %sRiceError.log%s\n\n" "${BLD}" "${CRE}" "$folder_to_backup" "${CBL}" "${CNC}"
         fi
     else
-        printf "%s%s ~/.config/%s folder does not exist, %sno backup needed%s\n" "${BLD}" "${CGR}" "$folder_to_backup" "${CYE}" "${CNC}"
+        printf "%s%s       ~/.config/%s folder does not exist, %sno backup needed%s\n\n" "${BLD}" "${CGR}" "$folder_to_backup" "${CYE}" "${CNC}"
     fi
 }
 
@@ -72,11 +72,11 @@ backup_folder_home() {
     if [ -d "$HOME/$folder_to_backup" ]; then
         mv "$HOME/$folder_to_backup" "$backup_folder/${folder_to_backup}_$date" 2>> RiceError.log
         if [ $? -eq 0 ]; then
-            printf "%s%s ~/%s folder backed up successfully at %s%s/%s_%s%s\n" "${BLD}" "${CGR}" "$folder_to_backup" "${CBL}" "$backup_folder" "$folder_to_backup" "$date" "${CNC}"
+            printf "%s%s       ~/%s folder backed up successfully at %s%s/%s_%s%s\n\n" "${BLD}" "${CGR}" "$folder_to_backup" "${CBL}" "$backup_folder" "$folder_to_backup" "$date" "${CNC}"
         else
-            printf "%s%sFailed to backup ~/%s folder. See %sRiceError.log%s\n" "${BLD}" "${CRE}" "$folder_to_backup" "${CBL}" "${CNC}"
+            printf "%s%sFailed to backup ~/%s folder. See %sRiceError.log%s\n\n" "${BLD}" "${CRE}" "$folder_to_backup" "${CBL}" "${CNC}"
         fi
     else
-        printf "%s%s ~/%s folder does not exist, %sno backup needed%s\n" "${BLD}" "${CGR}" "$folder_to_backup" "${CYE}" "${CNC}"
+        printf "%s%s       ~/%s folder does not exist, %sno backup needed%s\n\n" "${BLD}" "${CGR}" "$folder_to_backup" "${CYE}" "${CNC}"
     fi
 }
