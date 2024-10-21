@@ -1,0 +1,92 @@
+#!/bin/bash
+
+
+# Directorio de configuración personal privada (no se sincroniza con git)
+mkdir -p ~/.config/personal/env
+
+ # Directorio del script actual
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+
+/opt/dotfiles/bin/created_by_me
+bin/created_by_me/
+# Directorio que contiene los scripts a llamar (relativo al script actual)
+SCRIPTS_DIR="$SCRIPT_DIR/bin/created_by_me/utility_scripts"
+
+backup_folder="$HOME/.RiceBackup"
+backup_path="$backup_folder/${folder}_$date"
+
+
+# Función para cargar un script y sus funciones
+cargar_script() {
+    local script_path="$SCRIPTS_DIR/$1"
+
+    if [[ -f "$script_path" ]]; then
+        source "$script_path"
+    else
+        echo "Error: El script '$1' no se encontró en $SCRIPTS_DIR"
+        exit 1
+    fi
+}
+
+check_gum() {
+  if ! command -v gum &>/dev/null; then  # Verifica si gum NO está instalado
+    if sudo pacman -S --noconfirm gum; then  # Intenta instalar con pacman
+      color_echo -b -g "gum" -w "installed" -o "successfully"
+    else
+      echo "pacman -S gum FAILED" # Si falla, muestra un mensaje de error
+    fi
+  fi
+}
+
+# Cargar scripts necesarios (ajusta los nombres según tus scripts)
+cargar_script "logo.sh"
+cargar_script "common_functions.sh"
+# cargar_script "colorsBashScript.sh"
+# cargar_script "menuPrincipal.sh"
+# cargar_script "rf_installer.sh"
+# cargar_script "paquetes.sh"
+# cargar_script "dbox.sh"
+# inicio del script
+
+
+# display_menu
+logo "Welcome!"
+
+
+# get dir of the current script and cd in it
+SDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd) && cd "$SDIR" || exit 1
+
+# show usage
+usage() { echo "Usage: $(basename "$0") <module> [module]..." >&2; }
+
+# simple log printer
+loginfo() { printf "%b[info]%b %s\n" '\e[0;32m\033[1m' '\e[0m' "$@" >&2; }
+logerro() { printf "%b[erro]%b %s\n" '\e[0;31m\033[1m' '\e[0m' "$@" >&2; }
+
+[[ "$#" -lt 1 ]] && usage && exit 1
+
+# install a module
+install_module() {
+
+    cargar_script "logo.sh"
+    cargar_script "common_functions.sh"
+    # Exportar las funciones para que estén disponibles en el entorno de setup.sh
+    export -f init_backup
+    export -f backup_file_config
+    export -f backup_file_home
+    export -f backup_folder_config
+    export -f backup_folder_home
+
+
+
+    local module="$1"
+    loginfo "install $module config ..."
+    [[ ! -f "$module/setup.sh" ]] && logerro "$module config not found!" && return 2
+    "$module/setup.sh"            && loginfo "$module config installed successfully!"
+}
+
+# install every specified modules
+for module in "$@"; do
+    install_module "${module%/}"
+done
