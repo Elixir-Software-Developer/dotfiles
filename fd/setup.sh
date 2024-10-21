@@ -35,23 +35,23 @@ test_backup() {
     # echo "Testing backup functions..."
 
     # Test backup_file
-    echo "Testing backup_file_in_home..."
+    echo "Testing backup file in $HOME"
     backup_file_in_home test_file_home.txt
  echo "..............................................."
 
 
     # Test backup_file_config
-    echo "Testing backup_file_in_config..."
+    echo "Testing backup file in $HOME/.config/..."
     backup_file_in_config test_file_config.txt
     echo "..............................................."
 
     # Test backup_folder
-    echo "Testing backup_folder_in_config..."
+    echo "Testing backup folder in $HOME/.config/..."
     backup_folder_in_config test_folder_config
     echo "..............................................."
 
     # Test backup_folder_home
-    echo "Testing backup_folder_in_home..."
+    echo "Testing backup folder in $HOME..."
     backup_folder_in_home test_folder_home
     echo "..............................................."
 

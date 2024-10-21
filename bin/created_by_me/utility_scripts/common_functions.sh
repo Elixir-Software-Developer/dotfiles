@@ -14,7 +14,8 @@ backup_folder=~/.RiceBackup
 # Function to initialize the backup process
 init_backup() {
     date=$(date +%Y%m%d-%H%M%S)
-    printf "\n       Backup files will be stored in %s%s%s/.RiceBackup%s \n" "${BLD}" "${CRE}" "$HOME" "${CNC}"
+    printf "\n"
+    # printf "\n       Backup files will be stored in %s%s%s/.RiceBackup%s \n" "${BLD}" "${CRE}" "$HOME" "${CNC}"
     # sleep 1
     [ ! -d "$backup_folder" ] && mkdir -p "$backup_folder"
 }
