@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# Directorio de configuración personal privada (no se sincroniza con git)
-mkdir -p ~/.config/personal/env
-
-
-
 cargar_script() {
     # Directorio del script actual
     local SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -22,19 +17,13 @@ cargar_script() {
     fi
 }
 
-# # Cargar scripts necesarios (ajusta los nombres según tus scripts)
-# cargar_script "logo.sh"
-# cargar_script "backup_files_config.sh"
-# cargar_script "common_functions.sh"
-
-# Mostrar logo
-logo "Welcome!"
 
 # get dir of the current script and cd in it
 SDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd) && cd "$SDIR" || exit 1
 
 
 export -f cargar_script
+
 # show usage
 usage() { echo "Usage: $(basename "$0") <module> [module]..." >&2; }
 
