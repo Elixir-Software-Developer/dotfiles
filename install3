@@ -36,31 +36,9 @@ check_gum() {
 
 # Cargar scripts necesarios (ajusta los nombres según tus scripts)
 cargar_script "logo.sh"
-# cargar_script "common_functions.sh"
-
-# # cargar_script "backup_files.sh"
-# cargar_script "backup_files_config.sh"
-# # # cargar_script "backup_folders.sh"
-# # # cargar_script "backup_folders_home.sh"
-# cargar_script "common_functions.sh"
-# cargar_script "estructura_de_directorios.sh"
-# cargar_script "test_backup.sh"
-
-# # Exportar las funciones para que estén disponibles en el entorno de setup.sh
-# export -f init_backup
-# export -f backup_file_config
-# export -f backup_file_home
-# export -f backup_folder_config
-# export -f backup_folder_home
-# export -f putisima
-
-# inicio del script
 
 # display_menu
 logo "Welcome!"
-
-# putisima una.sh
-# ./test_backup.sh
 
 
 # get dir of the current script and cd in it

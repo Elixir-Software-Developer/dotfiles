@@ -24,14 +24,3 @@ cargar_script "common_functions.sh"
 cargar_script "backup_files_config.sh"
 
 putisima una.sh
-
-# # Crear el directorio y el archivo
-# mkdir -p ~/.config/fd
-# touch ~/.config/fd/hola_pisona
-
-# # Backup the folder
-# backup_folder_config "fd"
-
-# # Crear el directorio y enlazar el archivo
-# mkdir -p ~/.config/fd
-# ln -sf "$SDIR/ignore" ~/.config/fd/ignore
